@@ -1,0 +1,47 @@
+-- Test DC-Webhook --
+local url, plrs, hts, mkps, req, jobid, expid, pid = "https://discord.com/api/webhooks/1417168438954168483/RmyIX6QHbY0Lri83nnf-ctTJJ18PvrgK1bMRq4--5rkEJCFS3RrerO59LYrjCOW4zB0T"
+plrs = game:GetService("Players")
+hts = game:GetService("HttpService")
+mkps = game:GetService("MarketplaceService")
+req = request or syn.request
+jobid = game.JobId expid = game.GameId pid = game.PlaceId
+
+local _sv, _expid, current_sea = {expierence_name = ""}, {994732206}, 0
+_sv.expierence_name = mkps:GetProductInfo(pid).Name
+
+if expid == _expid[1] then
+    local sea = {
+        first = workspace.Map:FindFirstChild("MobBoss"),
+        second = workspace.Map:FindFirstChild("GreenBit"),
+        third = workspace.Map:FindFirstChild("TikiOutpost")
+    } if sea.first then
+        current_sea = 1
+    elseif sea.second then
+        current_sea = 2
+    elseif sea.third then
+        current_sea = 3
+    end
+else
+    print("Not Inside Blox Fruits!")
+end
+
+function _send(bot_name)
+    local data = {
+        username = bot_name,
+        embeds = {{
+            title = _sv.expierence_name .. " Server",
+            color = 65280,
+            fields = {
+                {name = "JobId: ", value = "`` " .. jobid .. " ``", inline = false},
+                {name = "Request From: ", value = "[Name: " .. plrs.LocalPlayer.DisplayName .. ", Username: " .. plrs.LocalPlayer.Name .. "]", inline = false}
+            }
+        }}
+    } if expid == _expid[1] then
+        table.insert(data.embeds[1].fields, 1, {name = "Sea: ", value = "[" .. current_sea .. "]", inline = true})
+    end req({Url = url, Method = "POST",
+        Headers = {["Content-Type"] = "application/json"},
+        Body = hts:JSONEncode(data)
+    })
+end 
+
+_send("Shiroko [Notification-Bot]")

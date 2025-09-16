@@ -32,7 +32,7 @@ function _send(bot_name)
             title = _sv.expierence_name .. " Server",
             color = 65280,
             fields = {
-                {name = "JobId: ", value = "`` " .. jobid .. " ``", inline = false},
+                {name = "JobId: ", value = jobid, inline = false},
                 {name = "Request From: ", value = "[Name: " .. plrs.LocalPlayer.DisplayName .. ", Username: " .. plrs.LocalPlayer.Name .. "]", inline = false}
             }
         }}

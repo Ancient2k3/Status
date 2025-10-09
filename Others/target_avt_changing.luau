@@ -1,3 +1,3 @@
 return {
-  "noizybubnnyy", "longv9530"
+  "noizybubnnyy"
 }

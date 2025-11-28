@@ -1,3 +1,3 @@
 return {
-  "noizybubnnyy", "longv9530"
+  "lovely_girl", "lovely", "girl", "idk", "hugme", "hehe", "noizy", "pet"
 }

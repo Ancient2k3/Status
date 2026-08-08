@@ -39,7 +39,12 @@ function format_time(s)
   local d = math.floor(s / 86400) s = s % 86400
   local h = math.floor(s / 3600) s = s % 3600
   local m = math.floor(s / 60) s = s % 60
-  return string.format("%d ngày, %02d giờ, %02d phút, %02d giây nữa.", d, h, m, s)
+  if d > 0 then return string.format("%d ngày, %02d giờ, %02d phút, %02d giây nữa.", d, h, m, s)
+  elseif d <= 0 and h > 0 then return string.format("%02d giờ, %02d phút, %02d giây nữa.", h, m, s)
+  elseif d <= 0 and h <= 0 and m > 0 then return string.format("%02d phút, %02d giây nữa.", m, s)
+  elseif d <= 0 and h <= 0 and m <= 0 and s > 0 then return string.format("%02d giây nữa.", s)
+  else return "nil"
+  end
 end
 
 function add_ninja()

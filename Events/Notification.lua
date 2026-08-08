@@ -19,8 +19,8 @@ ui_t.screen.Name = "NEW_UPDATES_NOTIFY"
 b.Name = "New:Events"
 b.BackgroundTransparency = 0.5
 b.BackgroundColor3 = Color3.new(0, 0, 0)
-b.Position = UDim2.new(0.2, 0, 0.2, 0)
-b.Size = UDim2.new(0.6, 0, 0.4, 0)
+b.Position = UDim2.new(0.2, 0, 0, 0)
+b.Size = UDim2.new(0.6, 0, 0.2, 0)
 b.TextScaled = false
 b.TextSize = 12
 b.TextColor3 = Color3.new(1, 1, 1)
@@ -37,6 +37,7 @@ function re_active_ntf()
     if _G.ntf_content ~= "" and b.Text == ui_t.pre then
       b.Text = ui_t.pre .. _G.ntf_content .. "\n (Chạm vào để tắt thông báo)"
       if b.Text ~= ui_t.pre then
+        b.BackgroundTransparency = 0.5
         b.Visible = true
         ui_t.event:Disconnect()
         ui_t.event = nil

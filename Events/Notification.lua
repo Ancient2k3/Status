@@ -44,7 +44,9 @@ end
 
 function add_ninja()
   ui_t.event_1 = rs.RenderStepped:Connect(function()
-    b.Text = ui_t.old_pre .. format_time(_G.ntf_time - tick()) .. ")"
+    if _G.ntf_time then
+      b.Text = ui_t.old_pre .. format_time(_G.ntf_time - tick()) .. ")"
+    end
   end)
 end
 

@@ -39,7 +39,7 @@ function format_time(s)
   local d = math.floor(s / 86400) s = s % 86400
   local h = math.floor(s / 3600) s = s % 3600
   local m = math.floor(s / 60) s = s % 60
-  return string.format("%d:%02d:%02d:%02d", d, h, m, s)
+  return string.format("%d ngày, %02d giờ, %02d phút, %02d giây nữa.", d, h, m, s)
 end
 
 function add_ninja()
@@ -53,7 +53,7 @@ end
 function re_active_ntf()
   ui_t.event = rs.RenderStepped:Connect(function()
     if _G.ntf_content ~= "" and b.Text == ui_t.pre then
-      b.Text = ui_t.pre .. _G.ntf_content .. "\n (Thời gian còn: "
+      b.Text = ui_t.pre .. _G.ntf_content .. "\n (Ngừng hiển thị thông báo này sau: "
       ui_t.old_pre = b.Text
       if b.Text ~= ui_t.pre then
         b.BackgroundTransparency = 0.5
